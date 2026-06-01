@@ -48,7 +48,8 @@ function App() {
         formData.append('jobDescription', data.jobDescription);
       }
 
-      const endpoint = `http://localhost:3000/api/${mode}`;
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const endpoint = `${baseUrl}/api/${mode}`;
       
       const response = await fetch(endpoint, {
         method: 'POST',

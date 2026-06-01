@@ -22,7 +22,8 @@ function InterviewResults({ results }) {
     setEvaluations(prev => ({ ...prev, [qId]: '' })); // Clear previous evaluation or set empty
     
     try {
-      const response = await fetch('http://localhost:3000/api/evaluate', {
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await fetch(`${baseUrl}/api/evaluate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: questionText, answer: answerInput })
